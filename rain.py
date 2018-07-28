@@ -27,9 +27,9 @@ def main():
 
         def draw(self):
             # pygame.draw.rect(screen, self.rgb, (self.x, self.y, random.choice(self.size)))
-            pygame.draw.rect(screen, self.rgb, (self.x, self.y, self.size, self.size))
+            pygame.draw.rect(screen, self.rgb, (self.x, self.y, self.size/4, self.size))
 
-    drops = [Drop() for i in range(300)]
+    drops = [Drop() for i in range(500)]
 
     while running:
         clock.tick(30)
@@ -40,6 +40,9 @@ def main():
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_ESCAPE:
                     pygame.event.post(pygame.event.Event(pygame.QUIT))
+                if event.key == pygame.K_DOWN:
+                    for i in drops:
+                        i.yspeed = i.yspeed + 1
 
 
         for i in drops:
